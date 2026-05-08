@@ -17,6 +17,8 @@
 –red: #e03e2d;
 –gray: #1e1e1e;
 –mid-gray: #2e2e2e;
+–green: #2a4a2a;
+–green-text: #6abf6a;
 }
 
 body {
@@ -85,14 +87,8 @@ position: relative;
 }
 
 .option:active { cursor: grabbing; transform: scale(1.02); }
-.option.dragging {
-opacity: 0.5;
-border-color: var(–yellow);
-}
-.option.drag-over {
-border-color: var(–yellow);
-background: var(–mid-gray);
-}
+.option.dragging { opacity: 0.4; border-color: var(–yellow); }
+.option.drag-over { border-color: var(–yellow); background: var(–mid-gray); }
 
 .rank-badge {
 font-family: ‘Bebas Neue’, sans-serif;
@@ -103,15 +99,9 @@ text-align: center;
 line-height: 1;
 }
 
-.option-emoji {
-font-size: 24px;
-min-width: 32px;
-text-align: center;
-}
+.option-emoji { font-size: 24px; min-width: 32px; text-align: center; }
 
-.option-info {
-flex: 1;
-}
+.option-info { flex: 1; }
 
 .option-title {
 font-weight: 600;
@@ -120,11 +110,7 @@ color: var(–off-white);
 line-height: 1.3;
 }
 
-.option-meta {
-font-size: 12px;
-color: #666;
-margin-top: 3px;
-}
+.option-meta { font-size: 12px; color: #666; margin-top: 3px; }
 
 .option-price {
 font-family: ‘Bebas Neue’, sans-serif;
@@ -133,11 +119,7 @@ color: #555;
 white-space: nowrap;
 }
 
-.drag-handle {
-color: #444;
-font-size: 18px;
-cursor: grab;
-}
+.drag-handle { color: #444; font-size: 18px; }
 
 .submit-section {
 max-width: 540px;
@@ -177,6 +159,19 @@ transition: background 0.15s, transform 0.1s;
 
 .submit-btn:hover { background: #f7d060; }
 .submit-btn:active { transform: scale(0.98); }
+.submit-btn:disabled { background: #555; cursor: not-allowed; }
+
+.msg {
+border-radius: 6px;
+padding: 14px 18px;
+font-size: 14px;
+margin-top: 12px;
+display: none;
+}
+
+.msg.visible { display: block; }
+.msg.success { background: var(–green); border: 1px solid #2a4a2a; color: var(–green-text); }
+.msg.error { background: #2e1a1a; border: 1px solid #4a2a2a; color: #bf6a6a; }
 
 .results-section {
 max-width: 540px;
@@ -186,7 +181,7 @@ display: none;
 
 .results-section.visible { display: block; }
 
-.results-title {
+.section-title {
 font-family: ‘Bebas Neue’, sans-serif;
 font-size: 32px;
 color: var(–yellow);
@@ -218,24 +213,23 @@ color: #aaa;
 line-height: 1.9;
 }
 
-.result-list li span {
-color: var(–off-white);
-}
+.result-list li span { color: var(–off-white); }
 
 .tally-section {
-max-width: 540px;
-margin: 24px auto 0;
 background: var(–gray);
 border-radius: 6px;
 padding: 18px;
+margin-top: 16px;
 }
 
 .tally-title {
 font-family: ‘Bebas Neue’, sans-serif;
 font-size: 24px;
 color: var(–yellow);
-margin-bottom: 14px;
+margin-bottom: 6px;
 }
+
+.tally-subtitle { font-size: 12px; color: #555; margin-bottom: 14px; }
 
 .tally-item {
 display: flex;
@@ -247,57 +241,110 @@ font-size: 13px;
 }
 
 .tally-item:last-child { border-bottom: none; }
-
 .tally-name { color: var(–off-white); }
-
-.tally-score {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 20px;
-color: var(–yellow);
-}
-
-.tally-winner .tally-name {
-color: var(–yellow);
-font-weight: 600;
-}
+.tally-score { font-family: ‘Bebas Neue’, sans-serif; font-size: 20px; color: var(–yellow); }
+.tally-winner .tally-name { color: var(–yellow); font-weight: 600; }
 
 .winner-badge {
 background: var(–yellow);
 color: var(–black);
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: 12px;
-padding: 2px 8px;
+font-size: 11px;
+padding: 2px 7px;
 border-radius: 3px;
 margin-left: 8px;
 }
 
-.success-msg {
-background: #1a2e1a;
-border: 1px solid #2a4a2a;
+.ai-section {
+background: var(–gray);
+border: 1px solid #333;
 border-radius: 6px;
-padding: 14px 18px;
+padding: 18px;
+margin-top: 16px;
+}
+
+.ai-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 24px;
+color: var(–yellow);
+margin-bottom: 14px;
+}
+
+.ai-btn {
+background: transparent;
+border: 1px solid var(–yellow);
+border-radius: 6px;
+color: var(–yellow);
+padding: 12px 18px;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 18px;
+letter-spacing: 1px;
+cursor: pointer;
+width: 100%;
+transition: background 0.15s;
+margin-bottom: 14px;
+}
+
+.ai-btn:hover { background: rgba(245,200,66,0.1); }
+.ai-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.ai-response {
 font-size: 14px;
-color: #6abf6a;
-margin-top: 12px;
+color: #bbb;
+line-height: 1.7;
+white-space: pre-wrap;
 display: none;
 }
 
-.success-msg.visible { display: block; }
+.ai-response.visible { display: block; }
 
-.reset-btn {
+.ai-loading {
+font-size: 13px;
+color: #666;
+display: none;
+}
+
+.ai-loading.visible { display: block; }
+
+.actions {
+max-width: 540px;
+margin: 16px auto 0;
+display: flex;
+gap: 10px;
+}
+
+.action-btn {
+flex: 1;
 background: transparent;
 border: 1px solid #333;
 border-radius: 6px;
 color: #666;
-padding: 10px 16px;
+padding: 10px 14px;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 13px;
 cursor: pointer;
-margin-top: 16px;
 transition: border-color 0.15s, color 0.15s;
+text-align: center;
 }
 
-.reset-btn:hover { border-color: var(–red); color: var(–red); }
+.action-btn:hover { border-color: #555; color: #aaa; }
+.action-btn.danger:hover { border-color: var(–red); color: var(–red); }
+
+.status-bar {
+max-width: 540px;
+margin: 0 auto 20px;
+font-size: 12px;
+color: #444;
+text-align: right;
+}
+
+.dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #444; margin-right: 6px; vertical-align: middle; }
+.dot.live { background: var(–green-text); animation: pulse 2s infinite; }
+
+@keyframes pulse {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.4; }
+}
 </style>
 
 </head>
@@ -309,7 +356,12 @@ transition: border-color 0.15s, color 0.15s;
 </header>
 
 <div class="instructions">
-  <strong>Drag to reorder</strong> — put your #1 at the top, your last choice at the bottom. Enter your name and hit submit.
+  <strong>Drag to reorder</strong> — put your #1 at the top, last choice at the bottom. Enter your name and submit. Everyone's results sync in real time.
+</div>
+
+<div class="status-bar">
+  <span class="dot" id="statusDot"></span>
+  <span id="statusText">Connecting...</span>
 </div>
 
 <div class="options" id="optionsList">
@@ -341,7 +393,7 @@ transition: border-color 0.15s, color 0.15s;
     <div class="option-emoji">⚽</div>
     <div class="option-info">
       <div class="option-title">Angel City FC — 5:45pm</div>
-      <div class="option-meta">BMO Stadium — Exposition Park · go out downtown after</div>
+      <div class="option-meta">BMO Stadium — Exposition Park · eat downtown after</div>
     </div>
     <div class="option-price">$24–50</div>
     <div class="drag-handle">⠿</div>
@@ -406,151 +458,210 @@ transition: border-color 0.15s, color 0.15s;
 
 <div class="submit-section">
   <input type="text" class="name-input" id="nameInput" placeholder="Your name" maxlength="30">
-  <button class="submit-btn" onclick="submitRanking()">LOCK IN MY RANKING</button>
-  <div class="success-msg" id="successMsg">✓ Ranking saved. Tell the next guy to do his.</div>
+  <button class="submit-btn" id="submitBtn" onclick="submitRanking()">LOCK IN MY RANKING</button>
+  <div class="msg success" id="successMsg">✓ Ranking saved. Tell the next guy to open the link and do his.</div>
+  <div class="msg error" id="errorMsg"></div>
 </div>
 
 <div class="results-section" id="resultsSection">
-  <div class="results-title">Rankings So Far</div>
+  <div class="section-title">Rankings So Far</div>
   <div id="resultsList"></div>
+
   <div class="tally-section" id="tallySection"></div>
-  <button class="reset-btn" onclick="clearAll()">Clear all results</button>
+
+  <div class="ai-section">
+    <div class="ai-title">🤖 AI Pick</div>
+    <button class="ai-btn" id="aiBtn" onclick="getAIPick()">GET THE AI RECOMMENDATION</button>
+    <div class="ai-loading" id="aiLoading">Thinking...</div>
+    <div class="ai-response" id="aiResponse"></div>
+  </div>
+</div>
+
+<div class="actions">
+  <button class="action-btn" onclick="loadResults()">↻ Refresh Results</button>
+  <button class="action-btn danger" onclick="clearAll()">Clear All</button>
 </div>
 
 <script>
-  const list = document.getElementById('optionsList');
+  // ── JSONBlob config ─────────────────────────────────────────────
+  // Using a public JSONBlob to store shared results.
+  // This blob ID is unique to this survey.
+  const BLOB_ID = '1968523770254647296';
+  const BLOB_URL = `https://jsonblob.com/api/jsonBlob/${BLOB_ID}`;
+
+  // ── State ───────────────────────────────────────────────────────
+  let sharedResults = [];
+
+  // ── Drag & Drop ─────────────────────────────────────────────────
+  const listEl = document.getElementById('optionsList');
   let dragSrc = null;
 
   function updateRanks() {
-    const items = list.querySelectorAll('.option');
-    items.forEach((item, i) => {
+    listEl.querySelectorAll('.option').forEach((item, i) => {
       item.querySelector('.rank-badge').textContent = i + 1;
     });
   }
 
-  list.querySelectorAll('.option').forEach(item => {
+  listEl.querySelectorAll('.option').forEach(item => {
     item.addEventListener('dragstart', e => {
       dragSrc = item;
       setTimeout(() => item.classList.add('dragging'), 0);
       e.dataTransfer.effectAllowed = 'move';
     });
-
     item.addEventListener('dragend', () => {
       item.classList.remove('dragging');
-      list.querySelectorAll('.option').forEach(i => i.classList.remove('drag-over'));
+      listEl.querySelectorAll('.option').forEach(i => i.classList.remove('drag-over'));
       updateRanks();
     });
-
     item.addEventListener('dragover', e => {
       e.preventDefault();
-      e.dataTransfer.dropEffect = 'move';
       if (item !== dragSrc) {
-        list.querySelectorAll('.option').forEach(i => i.classList.remove('drag-over'));
+        listEl.querySelectorAll('.option').forEach(i => i.classList.remove('drag-over'));
         item.classList.add('drag-over');
       }
     });
-
     item.addEventListener('drop', e => {
       e.preventDefault();
       if (item !== dragSrc) {
-        const allItems = [...list.querySelectorAll('.option')];
-        const srcIdx = allItems.indexOf(dragSrc);
-        const tgtIdx = allItems.indexOf(item);
-        if (srcIdx < tgtIdx) {
-          list.insertBefore(dragSrc, item.nextSibling);
-        } else {
-          list.insertBefore(dragSrc, item);
-        }
+        const all = [...listEl.querySelectorAll('.option')];
+        const si = all.indexOf(dragSrc), ti = all.indexOf(item);
+        si < ti ? listEl.insertBefore(dragSrc, item.nextSibling) : listEl.insertBefore(dragSrc, item);
         updateRanks();
       }
     });
   });
 
-  // Touch support
-  let touchItem = null, touchClone = null, touchOffsetY = 0;
-
-  list.querySelectorAll('.option').forEach(item => {
+  // Touch
+  let touchItem = null, touchClone = null, touchOffY = 0;
+  listEl.querySelectorAll('.option').forEach(item => {
     item.addEventListener('touchstart', e => {
       touchItem = item;
-      const touch = e.touches[0];
-      const rect = item.getBoundingClientRect();
-      touchOffsetY = touch.clientY - rect.top;
+      const t = e.touches[0], r = item.getBoundingClientRect();
+      touchOffY = t.clientY - r.top;
       touchClone = item.cloneNode(true);
-      touchClone.style.cssText = `position:fixed;width:${rect.width}px;opacity:0.85;z-index:1000;pointer-events:none;left:${rect.left}px;top:${touch.clientY - touchOffsetY}px;`;
+      touchClone.style.cssText = `position:fixed;width:${r.width}px;opacity:0.85;z-index:1000;pointer-events:none;left:${r.left}px;top:${t.clientY - touchOffY}px;border-radius:6px;`;
       document.body.appendChild(touchClone);
       item.style.opacity = '0.3';
     }, { passive: true });
 
     item.addEventListener('touchmove', e => {
       if (!touchClone) return;
-      const touch = e.touches[0];
-      touchClone.style.top = (touch.clientY - touchOffsetY) + 'px';
-      const els = document.elementsFromPoint(touch.clientX, touch.clientY);
+      const t = e.touches[0];
+      touchClone.style.top = (t.clientY - touchOffY) + 'px';
+      const els = document.elementsFromPoint(t.clientX, t.clientY);
       const target = els.find(el => el.classList.contains('option') && el !== touchItem);
       if (target) {
-        list.querySelectorAll('.option').forEach(i => i.classList.remove('drag-over'));
+        listEl.querySelectorAll('.option').forEach(i => i.classList.remove('drag-over'));
         target.classList.add('drag-over');
       }
     }, { passive: true });
 
     item.addEventListener('touchend', e => {
       if (!touchClone) return;
-      const touch = e.changedTouches[0];
-      const els = document.elementsFromPoint(touch.clientX, touch.clientY);
+      const t = e.changedTouches[0];
+      const els = document.elementsFromPoint(t.clientX, t.clientY);
       const target = els.find(el => el.classList.contains('option') && el !== touchItem);
       if (target) {
-        const allItems = [...list.querySelectorAll('.option')];
-        const srcIdx = allItems.indexOf(touchItem);
-        const tgtIdx = allItems.indexOf(target);
-        if (srcIdx < tgtIdx) list.insertBefore(touchItem, target.nextSibling);
-        else list.insertBefore(touchItem, target);
+        const all = [...listEl.querySelectorAll('.option')];
+        const si = all.indexOf(touchItem), ti = all.indexOf(target);
+        si < ti ? listEl.insertBefore(touchItem, target.nextSibling) : listEl.insertBefore(touchItem, target);
       }
       touchItem.style.opacity = '';
-      touchClone.remove();
-      touchClone = null;
-      list.querySelectorAll('.option').forEach(i => i.classList.remove('drag-over'));
+      touchClone.remove(); touchClone = null;
+      listEl.querySelectorAll('.option').forEach(i => i.classList.remove('drag-over'));
       updateRanks();
     });
   });
 
-  function getStoredResults() {
+  // ── JSONBlob helpers ─────────────────────────────────────────────
+  async function fetchResults() {
     try {
-      return JSON.parse(localStorage.getItem('sat9_results') || '[]');
-    } catch { return []; }
+      const res = await fetch(BLOB_URL, { headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error('fetch failed');
+      const data = await res.json();
+      sharedResults = data.results || [];
+      setStatus(true);
+      return true;
+    } catch {
+      setStatus(false);
+      return false;
+    }
   }
 
-  function saveResults(results) {
-    localStorage.setItem('sat9_results', JSON.stringify(results));
+  async function pushResults() {
+    try {
+      const res = await fetch(BLOB_URL, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ results: sharedResults })
+      });
+      return res.ok;
+    } catch { return false; }
   }
 
-  function submitRanking() {
+  function setStatus(online) {
+    document.getElementById('statusDot').className = 'dot' + (online ? ' live' : '');
+    document.getElementById('statusText').textContent = online ? 'Live' : 'Offline — results may not sync';
+  }
+
+  // ── Submit ───────────────────────────────────────────────────────
+  async function submitRanking() {
     const name = document.getElementById('nameInput').value.trim();
-    if (!name) { alert('Enter your name first.'); return; }
+    if (!name) { showError('Enter your name first.'); return; }
 
-    const items = list.querySelectorAll('.option');
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'SAVING...';
+
+    const items = listEl.querySelectorAll('.option');
     const ranking = [...items].map(item => item.querySelector('.option-title').textContent);
 
-    const results = getStoredResults();
-    const existing = results.findIndex(r => r.name.toLowerCase() === name.toLowerCase());
-    if (existing >= 0) results.splice(existing, 1);
-    results.push({ name, ranking });
-    saveResults(results);
+    const ok = await fetchResults();
+    if (!ok) {
+      showError('Could not connect. Check your connection and try again.');
+      btn.disabled = false; btn.textContent = 'LOCK IN MY RANKING';
+      return;
+    }
 
-    document.getElementById('successMsg').classList.add('visible');
-    document.getElementById('nameInput').value = '';
+    const existing = sharedResults.findIndex(r => r.name.toLowerCase() === name.toLowerCase());
+    if (existing >= 0) sharedResults.splice(existing, 1);
+    sharedResults.push({ name, ranking, ts: Date.now() });
+
+    const saved = await pushResults();
+    btn.disabled = false; btn.textContent = 'LOCK IN MY RANKING';
+
+    if (saved) {
+      document.getElementById('nameInput').value = '';
+      document.getElementById('successMsg').classList.add('visible');
+      document.getElementById('errorMsg').classList.remove('visible');
+      renderResults();
+    } else {
+      showError('Save failed. Try again.');
+    }
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('errorMsg');
+    el.textContent = msg;
+    el.classList.add('visible');
+  }
+
+  // ── Load & Render ────────────────────────────────────────────────
+  async function loadResults() {
+    await fetchResults();
     renderResults();
   }
 
   function renderResults() {
-    const results = getStoredResults();
-    if (results.length === 0) {
+    if (sharedResults.length === 0) {
       document.getElementById('resultsSection').classList.remove('visible');
       return;
     }
 
     document.getElementById('resultsSection').classList.add('visible');
-    const list2 = document.getElementById('resultsList');
-    list2.innerHTML = results.map(r => `
+
+    // Individual rankings
+    document.getElementById('resultsList').innerHTML = sharedResults.map(r => `
       <div class="result-entry">
         <div class="result-name">${r.name}</div>
         <ul class="result-list">
@@ -559,19 +670,19 @@ transition: border-color 0.15s, color 0.15s;
       </div>
     `).join('');
 
-    // Tally: lower score = better (1st place = 1 point)
-    if (results.length > 1) {
+    // Tally
+    if (sharedResults.length >= 1) {
       const scores = {};
-      results.forEach(r => {
+      sharedResults.forEach(r => {
         r.ranking.forEach((item, i) => {
           scores[item] = (scores[item] || 0) + (i + 1);
         });
       });
       const sorted = Object.entries(scores).sort((a, b) => a[1] - b[1]);
-      const winner = sorted[0][0];
+
       document.getElementById('tallySection').innerHTML = `
-        <div class="tally-title">GROUP TALLY</div>
-        <div style="font-size:12px;color:#555;margin-bottom:12px;">Lower score = higher preference</div>
+        <div class="tally-title">Group Tally</div>
+        <div class="tally-subtitle">Lower score = higher preference · ${sharedResults.length} of 3 submitted</div>
         ${sorted.map(([name, score], i) => `
           <div class="tally-item ${i === 0 ? 'tally-winner' : ''}">
             <span class="tally-name">${name}${i === 0 ? '<span class="winner-badge">TOP PICK</span>' : ''}</span>
@@ -579,20 +690,95 @@ transition: border-color 0.15s, color 0.15s;
           </div>
         `).join('')}
       `;
-    } else {
-      document.getElementById('tallySection').innerHTML = '';
     }
+
+    // Reset AI if new results came in
+    document.getElementById('aiResponse').classList.remove('visible');
+    document.getElementById('aiResponse').textContent = '';
   }
 
-  function clearAll() {
-    if (confirm('Clear all results?')) {
-      localStorage.removeItem('sat9_results');
-      document.getElementById('successMsg').classList.remove('visible');
-      renderResults();
+  // ── AI Recommendation ────────────────────────────────────────────
+  async function getAIPick() {
+    if (sharedResults.length === 0) { alert('No results yet.'); return; }
+
+    const btn = document.getElementById('aiBtn');
+    const loading = document.getElementById('aiLoading');
+    const responseEl = document.getElementById('aiResponse');
+
+    btn.disabled = true;
+    loading.classList.add('visible');
+    responseEl.classList.remove('visible');
+
+    // Build prompt
+    const scores = {};
+    sharedResults.forEach(r => {
+      r.ranking.forEach((item, i) => {
+        scores[item] = (scores[item] || 0) + (i + 1);
+      });
+    });
+    const sorted = Object.entries(scores).sort((a, b) => a[1] - b[1]);
+    const names = sharedResults.map(r => r.name).join(', ');
+
+    const rankingSummary = sharedResults.map(r =>
+      `${r.name}: ${r.ranking.map((item, i) => `#${i+1} ${item}`).join(', ')}`
+    ).join('\n');
+
+    const prompt = `You are helping a group of 3 guys in LA decide what to do on Saturday May 9. Here are their rankings (1 = top choice):
+
+${rankingSummary}
+
+Group tally (lower = more preferred):
+${sorted.map(([name, score]) => `${name}: ${score} points`).join('\n')}
+
+The options are:
+- Lakers Playoffs vs OKC ($250) — get fucked up
+- Flight of the Conchords at The Greek ($85) — get fucked up  
+- Angel City FC soccer game 5:45pm ($24-50) — get fucked up, eat downtown after
+- MUNA concert at Shrine Auditorium ($30) — get fucked up
+- Brassroots District: LA '74 immersive funk concert ($65) — get fucked up
+- Sandbox VR at The Village ($40) — get really high
+- Canoga Park Bowl ($6-10) — get fucked up
+- Katsuya + Laurel Tavern, The Valley (no ticket cost) — get fucked up
+
+Based on the group's rankings, pick the best option for the group. Be direct and confident. Keep it to 3-4 sentences max. Mention the group tally winner but also consider if there's a clear consensus. Be fun and casual, these are guys planning a night out.`;
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          messages: [{ role: 'user', content: prompt }]
+        })
+      });
+
+      const data = await res.json();
+      const text = data.content?.[0]?.text || 'Could not get a recommendation. Try again.';
+      responseEl.textContent = text;
+      responseEl.classList.add('visible');
+    } catch {
+      responseEl.textContent = 'Something went wrong. Try again.';
+      responseEl.classList.add('visible');
     }
+
+    loading.classList.remove('visible');
+    btn.disabled = false;
   }
 
-  renderResults();
+  // ── Clear ────────────────────────────────────────────────────────
+  async function clearAll() {
+    if (!confirm('Clear everyone\'s results?')) return;
+    sharedResults = [];
+    await pushResults();
+    document.getElementById('successMsg').classList.remove('visible');
+    document.getElementById('aiResponse').classList.remove('visible');
+    renderResults();
+  }
+
+  // ── Init ─────────────────────────────────────────────────────────
+  loadResults();
+  setInterval(loadResults, 30000); // auto-refresh every 30s
 </script>
 
 </body>
